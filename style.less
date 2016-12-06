@@ -18,9 +18,20 @@
     }
 }
 
+//bakgrund text
+.wrap-all {
+    background-color: #ce7;
+}
+
+body {
+    background-image: url('http://www.student.bth.se/~arla16/dbwebb-kurser/design/me/kmom02/anax-flat/htdocs/img/background.gif');
+}
+
 /** --------------------------------------------------------------
  *  Header
  */
+
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
 // Size of max navbar button
 .rm-max .rm-small .rm-button {
@@ -31,10 +42,12 @@
 
 // Style navbar
 .rm-desktop li {
-    background-color: #096;
+    background-color: #b7d553;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid black;
 }
 
-@navbarItemBgColor: #096;
+@navbarItemBgColor: #bd5;
 
 
 // Size each item in the header
@@ -45,8 +58,14 @@
     width: 30%;
 }
 
+.article,
+.main {
+    padding: 5px;
+}
+
 .site-header {
-    height: 80px;
+    height: 55px;
+    background-image: url('http://www.student.bth.se/~arla16/dbwebb-kurser/design/me/kmom02/anax-flat/htdocs/img/background.gif');
 }
 
 // Site title
@@ -56,6 +75,70 @@
     a {
         text-decoration: none;
     }
+}
+
+.breadcrumb-list a {
+    background-color: #bd5;
+    //border: 2px solid black;
+    color: black;
+}
+
+//me-sidan
+.me {
+    width: 400px;
+    float: right;
+    margin-bottom: 10px;
+    clear: right; /*prevents image from overlapping byline*/
+}
+
+// om-sidan
+.om {
+    width: 200px;
+    float: right;
+    clear: right;
+}
+
+/** --------------------------------------------------------------
+ *  Byline
+ */
+
+.byline {
+    border: 1px solid #666666;
+    color: black;
+    clear: both; /*prevents byline from overlapping me-image*/
+    background-color: #bd5;
+}
+
+.byline img {
+	float: left;
+    margin: 5px;
+    clear: both;
+}
+
+/** --------------------------------------------------------------
+ *  Footer
+ */
+
+.footer {
+    background-color: #bd5;
+}
+
+.footer-column-wrapper {
+    color: black;
+    border-bottom: 1px solid #666;
+    padding: 5px;
+}
+
+a {
+    border: none;
+    text-decoration: none;
+    color: #000;
+    background-color: #3d3;
+    border-radius: 40px 10px;
+}
+
+a:hover {
+    background-color: #bd5;
 }
 
 /** --------------------------------------------------------------
