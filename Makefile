@@ -36,7 +36,7 @@ VENDORBIN 	= vendor/bin
 NPMBIN		= node_modules/.bin
 
 # LESS and CSS
-LESS 		 	= style.less #style1.less #style2.less
+LESS 		 	= style.less modules.less layout.less #style1.less #style2.less
 LESS_MODULES	= modules/
 LESS_OPTIONS 	= --strict-imports --include-path=$(LESS_MODULES)
 CSSLINT_OPTIONS = --quiet
@@ -171,3 +171,15 @@ upgrade-responsive-menu:
 .PHONY: upgrade
 upgrade: upgrade-normalize upgrade-responsive-menu
 	@$(call HELPTEXT,$@)
+
+
+
+# target: upgrade-grid       - Upgrade LESS module - Grid.
+.PHONY: upgrade-grid
+upgrade-grid:
+	@$(call HELPTEXT,$@)
+	# Grids
+	wget --quiet https://raw.githubusercontent.com/dbwebb-se/design/master/example/grid/fluid/less/grid-flex.less -O $(LESS_MODULES)/grid-flex.less
+	wget --quiet https://raw.githubusercontent.com/dbwebb-se/design/master/example/grid/fluid/less/grid-float.less -O $(LESS_MODULES)/grid-float.less
+	wget --quiet https://raw.githubusercontent.com/dbwebb-se/design/master/example/grid/fluid/less/layout-responsive-flex.less -O $(LESS_MODULES)/layout-responsive-flex.less
+	wget --quiet https://raw.githubusercontent.com/dbwebb-se/design/master/example/grid/fluid/less/layout-responsive-float.less -O $(LESS_MODULES)/layout-responsive-float.less

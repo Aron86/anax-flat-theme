@@ -1,0 +1,289 @@
+/**
+ * Gridbased layout
+ */
+@import "grid-helpers.less";
+@import url(modules.less);
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+@columnWidth:   30;
+@gutterWidth:   10;
+@columns:       24;
+
+body {
+    .font();
+    background-image: url('http://www.student.bth.se/~arla16/dbwebb-kurser/design/me/kmom02/anax-flat/htdocs/img/background.gif');
+}
+
+html {
+    overflow-y:scroll;
+}
+
+a {
+    border: none;
+    text-decoration: none;
+    color: #000;
+    background-color: #3d3;
+    border-radius: 40px 10px;
+}
+
+a:hover {
+    background-color: #bd5;
+}
+
+/** --------------------------------------------------------------
+ *  Typography
+ */
+
+ h1, h2, h3, h4, h5, h6 {
+     font-family: @fontFamilyHeadings;
+ }
+
+.typo {
+    background-image: url("../img/horisontal-grid-24.png");
+}
+
+/** --------------------------------------------------------------
+ *  Header
+ */
+
+.outer-wrap-header {
+    margin-bottom: @magicNumber;
+}
+
+.main,
+.byline,
+.breadcrumb-list {
+    margin-bottom: @magicNumber;
+    border: 1px solid gray;
+}
+
+.flash-wrap {
+    .column(20);
+    .push(2);
+    margin-bottom: @magicNumber;
+}
+
+/** --------------------------------------------------------------
+ *  Logo images
+ */
+.logo-1 {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.site-logo-text-icon {
+    img {
+        vertical-align: bottom;
+    }
+}
+
+.site-logo-text {
+    .column(6);
+}
+
+.navbar2 {
+    .column(18);
+}
+
+// Size of max navbar button
+.rm-max .rm-small .rm-button {
+    font-size: 2em;
+}
+
+@maxButtonFontSize: 2em;
+
+// Style navbar
+.rm-desktop li {
+    background-color: #b7d553;
+    font-family: 'Press Start 2P', cursive;
+    border: 2px solid black;
+}
+
+@navbarItemBgColor: #bd5;
+
+.breadcrumb-list {
+    .column(20);
+    .push(2);
+    border: 1px solid gray;
+    background-color: #bd5;
+}
+
+/** --------------------------------------------------------------
+ *  Main
+ */
+
+.inner-wrap {
+    @gridWidth: 1100px;
+    //@gridImage: "../img/grid940x12x60x20-nomargin.png";
+    @gridImage: "../img/grid950x24x30x10-nomargin.png";
+    .grid(@gridWidth);
+
+    html.vgrid & {
+        .showGrid(@gridWidth, @gridImage);
+    }
+    /*&.inner-wrap-footer { //"&"-tecken = "parent selector"
+        @gridWidth: 100%; //gridet över hela sidan
+        .showGrid(@gridWidth, @gridImage);
+    }*/
+}
+
+.row {
+    .row();
+}
+
+.article {
+    padding: 5px;
+    .om {
+        width: 200px;
+        float: right;
+        clear: right;
+    }
+    .me {
+        width: 400px;
+        float: right;
+        margin-bottom: 10px;
+    }
+}
+
+.main {
+    .column(20);
+    .push(2);
+    background-color: #ce7;
+    min-height: 30em;
+}
+
+.sidebar-left {
+    .column(3);
+    .push(2);
+    background-color: #ce7;
+    border: 1px solid gray;
+    text-align: center;
+    padding-right: 50px;
+}
+
+main.has-sidebar-left {
+    .column(17);
+}
+
+.next-previous {
+    .next,
+    .previous {
+        width: 50%;
+    }
+
+    .next {
+        float: right;
+        text-align: right;
+    }
+}
+
+//Gridsidan
+.main.has-sidebar-right {
+    .column(15);
+    .push(2);
+    opacity: 0.7;
+}
+
+.sidebar-right {
+    .column(4);
+    .push(1);
+    opacity: 0.7;
+    background-color: #ce7;
+    border: 1px solid gray;
+    padding: 5px;
+}
+/** --------------------------------------------------------------
+ *  Footer
+ */
+
+.outer-wrap-footer {
+    //background-color: #bd5;
+    background: #bd5; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#bd5, green); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#bd5, green); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#bd5, green); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#bd5, green); /* Standard syntax */
+}
+
+ .footer-column-wrapper {
+     .clearfix();
+ }
+
+.footer-column {
+    .column(@columns/3);
+    //background-color: brown;
+    //opacity: 0.5;
+    //color: white;
+    //border-left: 0.1px solid black;
+    text-align: center;
+}
+
+.site-footer {
+    .column(@columns);
+    //background-color: blue;
+    //opacity: 0.5;
+    //color: white;
+    text-align: center;
+}
+
+.byline {
+    .column(20);
+    .push(2);
+    border: 1px solid #666666;
+    color: black;
+    background-color: #bd5;
+
+    img {
+        float: left;
+        margin: 5px;
+    }
+}
+
+
+/** --------------------------------------------------------------
+ *  Responsive design
+ */
+img {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+    .site-logo-text {
+        width: 40%;
+    }
+
+    .navbar2 {
+        width: 50%;
+    }
+
+    .profile {
+        width: 10%;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .sidebar {
+        //width: 100%;
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .footer-column {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 560px) {
+    .site-logo-text {
+        width: 90%;
+    }
+
+    .navbar2 {
+        display: none;
+    }
+}
