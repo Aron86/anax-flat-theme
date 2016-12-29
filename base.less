@@ -1,0 +1,341 @@
+@import "grid-helpers.less";
+@import url(modules.less);
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+@columnWidth:   30;
+@gutterWidth:   10;
+@columns:       24;
+
+@backgroundImage: none;
+@mainBgColor: white;
+
+@linkbgColor: gray;
+@linkbgHover: none;
+
+@breadcrumbBgColor: white;
+@bylineBgColor: white;
+
+@navbarFont: none;
+@navbarItemBgColor: white;
+@navbarHoverBgColor: white;
+@maxButtonFontSize: 2em;
+
+@footerGradientFrom: white;
+@footerGradientTo: white;
+
+@flashstripeStart: white;
+@flashstripeStop: white;
+
+@fontColor: black;
+
+body {
+    .font();
+    color: @fontColor;
+    background-image: @backgroundImage;
+}
+
+html {
+    overflow-y:scroll;
+}
+
+/** --------------------------------------------------------------
+ *  Typography
+ */
+
+ h1, h2, h3, h4, h5, h6 {
+     font-family: @fontFamilyHeadings;
+ }
+
+.typo {
+    background-image: url("../img/horisontal-grid-24.png");
+    color: black;
+}
+
+/** --------------------------------------------------------------
+ *  Header
+ */
+
+.outer-wrap-header {
+    margin-bottom: @magicNumber;
+}
+
+.main,
+.byline,
+.breadcrumb-list {
+    margin-bottom: @magicNumber;
+    border: 1px solid black;
+    a {
+        border: none;
+        text-decoration: none;
+        color: @fontColor;
+        background-color: @linkbgColor;
+        border-radius: 40px 10px;
+    }
+
+    a:hover {
+        background-color: @linkbgHover;
+    }
+}
+
+.sidebar,
+.footer,
+.rm-mobile {
+    a {
+        border: none;
+        text-decoration: none;
+        color: @fontColor;
+        background-color: @linkbgColor;
+        border-radius: 40px 10px;
+    }
+
+    a:hover {
+        background-color: @linkbgHover;
+    }
+}
+
+.rm-max .rm-mobile {
+    background-color: @mainBgColor;
+}
+
+.flash-wrap {
+    border: 1px solid black;
+    background: repeating-linear-gradient(
+      45deg,
+      @flashstripeStart,
+      @flashstripeStart 10px,
+      @flashstripeStop 10px,
+      @flashstripeStop 20px
+    );
+    img {
+        display: block;
+        margin: auto;
+        padding: 5px;
+    }
+    .column(20);
+    .push(2);
+    margin-bottom: @magicNumber;
+}
+
+/** --------------------------------------------------------------
+ *  Logo images
+
+.logo-1 {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+*/
+.site-logo-text-icon {
+    img {
+        margin-top: 10px;
+        vertical-align: bottom;
+    }
+}
+
+.site-logo-text {
+    .column(3);
+    .pull(1);
+}
+
+.navbar2 {
+    .column(20);
+    margin-left: 0px;
+}
+
+// Size of max navbar button
+.rm-max .rm-small .rm-button {
+    font-size: 2em;
+}
+
+// Style navbar
+.rm-desktop li {
+    background-color: @navbarHoverBgColor;
+    font-family: @navbarFont;
+    border: 2px solid black;
+}
+
+.breadcrumb-list {
+    .column(20);
+    .push(2);
+    border: 1px solid black;
+    background-color: @breadcrumbBgColor;
+}
+
+/** --------------------------------------------------------------
+ *  Main
+ */
+
+.inner-wrap {
+    @gridWidth: 1100px;
+    //@gridImage: "../img/grid940x12x60x20-nomargin.png";
+    @gridImage: "../img/grid950x24x30x10-nomargin.png";
+    .grid(@gridWidth);
+
+    html.vgrid & {
+        .showGrid(@gridWidth, @gridImage);
+    }
+    &.inner-wrap-footer { //"&"-tecken = "parent selector"
+        @gridWidth: 100%; //gridet över hela sidan
+        //.showGrid(@gridWidth, @gridImage);
+    }
+}
+
+.outer-wrap-header {
+    //@gridImage: "../img/grid950x24x30x10-nomargin.png";
+    @gridWidth: 100%;
+    //html.vgrid & {
+    //    .showGrid(@gridWidth, @gridImage);
+    //}
+}
+
+.row {
+    .row();
+}
+
+.article {
+    padding: 5px;
+    .om {
+        width: 200px;
+        float: right;
+        clear: right;
+    }
+    .me {
+        width: 400px;
+        float: right;
+        margin-bottom: 10px;
+    }
+}
+
+.main {
+    .column(20);
+    .push(2);
+    background-color: @mainBgColor;
+    min-height: 30em;
+}
+
+.sidebar-left {
+    .column(3);
+    .push(2);
+    background-color: @mainBgColor;
+    border: 1px solid black;
+    text-align: center;
+    padding-right: 50px;
+}
+
+main.has-sidebar-left {
+    .column(17);
+}
+
+.next-previous {
+    .next,
+    .previous {
+        width: 50%;
+    }
+
+    .next {
+        float: right;
+        text-align: right;
+    }
+}
+
+//Gridsidan
+.main.has-sidebar-right {
+    .column(15);
+    .push(2);
+    opacity: 0.7;
+}
+
+.sidebar-right {
+    .column(4);
+    .push(1);
+    opacity: 0.7;
+    background-color: @mainBgColor;
+    border: 1px solid black;
+    padding: 5px;
+}
+/** --------------------------------------------------------------
+ *  Footer
+ */
+
+.outer-wrap-footer {
+    //background-color: #bd5;
+    background: @footerGradientFrom; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(@footerGradientFrom, @footerGradientTo); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(@footerGradientFrom, @footerGradientTo); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(@footerGradientFrom, @footerGradientTo); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(@footerGradientFrom, @footerGradientTo); /* Standard syntax */
+}
+
+ .footer-column-wrapper {
+     .clearfix();
+ }
+
+.footer-column {
+    .column(@columns/3);
+    text-align: center;
+}
+
+.site-footer {
+    .column(@columns);
+    text-align: center;
+}
+
+.byline {
+    .column(20);
+    .push(2);
+    border: 1px solid black;
+    background-color: @bylineBgColor;
+
+    img {
+        float: left;
+        margin: 5px;
+    }
+}
+
+
+/** --------------------------------------------------------------
+ *  Responsive design
+ */
+img {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+    .site-logo-text {
+        width: 40%;
+    }
+
+    .navbar2 {
+        width: 50%;
+    }
+
+    .profile {
+        width: 10%;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .sidebar {
+        //width: 100%;
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .footer-column {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 560px) {
+    .site-logo-text {
+        width: 90%;
+    }
+
+    .navbar2 {
+        display: none;
+    }
+}

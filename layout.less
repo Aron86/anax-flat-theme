@@ -9,25 +9,33 @@
 @gutterWidth:   10;
 @columns:       24;
 
+@backgroundImage: url('http://www.student.bth.se/~arla16/dbwebb-kurser/design/me/kmom02/anax-flat/htdocs/img/background.gif');
+@mainBgColor: #ce7;
+
+@linkbgColor: #3d3;
+@linkbgHover: #bd5;
+
+@breadcrumbBgColor: #bd5;
+@bylineBgColor: #bd5;
+
+@navbarFont: 'Press Start 2P', cursive;
+@navbarItemBgColor: #bd5;
+@navbarHoverBgColor: #3e4916;
+@maxButtonFontSize: 2em;
+
+@footerGradientFrom: #bd5;
+@footerGradientTo: green;
+
+@flashstripeStart: #ce7;
+@flashstripeStop: #bd5;
+
 body {
     .font();
-    background-image: url('http://www.student.bth.se/~arla16/dbwebb-kurser/design/me/kmom02/anax-flat/htdocs/img/background.gif');
+    background-image: @backgroundImage;
 }
 
 html {
     overflow-y:scroll;
-}
-
-a {
-    border: none;
-    text-decoration: none;
-    color: #000;
-    background-color: #3d3;
-    border-radius: 40px 10px;
-}
-
-a:hover {
-    background-color: #bd5;
 }
 
 /** --------------------------------------------------------------
@@ -55,9 +63,49 @@ a:hover {
 .breadcrumb-list {
     margin-bottom: @magicNumber;
     border: 1px solid gray;
+    a {
+        border: none;
+        text-decoration: none;
+        color: #000;
+        background-color: @linkbgColor;
+        border-radius: 40px 10px;
+    }
+
+    a:hover {
+        background-color: @linkbgHover;
+    }
+}
+
+.sidebar,
+.footer,
+.rm-mobile {
+    a {
+        border: none;
+        text-decoration: none;
+        color: #000;
+        background-color: @linkbgColor;
+        border-radius: 40px 10px;
+    }
+
+    a:hover {
+        background-color: @linkbgHover;
+    }
 }
 
 .flash-wrap {
+    border: 1px solid gray;
+    background: repeating-linear-gradient(
+      45deg,
+      @flashstripeStart,
+      @flashstripeStart 10px,
+      @flashstripeStop 10px,
+      @flashstripeStop 20px
+    );
+    img {
+        display: block;
+        margin: auto;
+        padding: 5px;
+    }
     .column(20);
     .push(2);
     margin-bottom: @magicNumber;
@@ -65,25 +113,27 @@ a:hover {
 
 /** --------------------------------------------------------------
  *  Logo images
- */
+
 .logo-1 {
     position: absolute;
     top: 100px;
     left: 100px;
 }
-
+*/
 .site-logo-text-icon {
     img {
+        margin-top: 10px;
         vertical-align: bottom;
     }
 }
 
 .site-logo-text {
-    .column(6);
+    .column(3);
 }
 
 .navbar2 {
-    .column(18);
+    .column(20);
+    .push(1);
 }
 
 // Size of max navbar button
@@ -91,22 +141,18 @@ a:hover {
     font-size: 2em;
 }
 
-@maxButtonFontSize: 2em;
-
 // Style navbar
 .rm-desktop li {
-    background-color: #b7d553;
-    font-family: 'Press Start 2P', cursive;
+    background-color: @navbarHoverBgColor;
+    font-family: @navbarFont;
     border: 2px solid black;
 }
-
-@navbarItemBgColor: #bd5;
 
 .breadcrumb-list {
     .column(20);
     .push(2);
     border: 1px solid gray;
-    background-color: #bd5;
+    background-color: @breadcrumbBgColor;
 }
 
 /** --------------------------------------------------------------
@@ -149,14 +195,14 @@ a:hover {
 .main {
     .column(20);
     .push(2);
-    background-color: #ce7;
+    background-color: @mainBgColor;
     min-height: 30em;
 }
 
 .sidebar-left {
     .column(3);
     .push(2);
-    background-color: #ce7;
+    background-color: @mainBgColor;
     border: 1px solid gray;
     text-align: center;
     padding-right: 50px;
@@ -189,7 +235,7 @@ main.has-sidebar-left {
     .column(4);
     .push(1);
     opacity: 0.7;
-    background-color: #ce7;
+    background-color: @mainBgColor;
     border: 1px solid gray;
     padding: 5px;
 }
@@ -199,11 +245,11 @@ main.has-sidebar-left {
 
 .outer-wrap-footer {
     //background-color: #bd5;
-    background: #bd5; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#bd5, green); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#bd5, green); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#bd5, green); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#bd5, green); /* Standard syntax */
+    background: @footerGradientFrom; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(@footerGradientFrom, @footerGradientTo); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(@footerGradientFrom, @footerGradientTo); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(@footerGradientFrom, @footerGradientTo); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(@footerGradientFrom, @footerGradientTo); /* Standard syntax */
 }
 
  .footer-column-wrapper {
@@ -232,7 +278,7 @@ main.has-sidebar-left {
     .push(2);
     border: 1px solid #666666;
     color: black;
-    background-color: #bd5;
+    background-color: @bylineBgColor;
 
     img {
         float: left;
