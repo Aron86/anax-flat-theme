@@ -1,6 +1,3 @@
-/**
- * Gridbased layout
- */
 @import "grid-helpers.less";
 @import url(modules.less);
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
@@ -9,28 +6,31 @@
 @gutterWidth:   10;
 @columns:       24;
 
-@backgroundImage: url('http://www.student.bth.se/~arla16/dbwebb-kurser/design/me/kmom02/anax-flat/htdocs/img/background.gif');
-@mainBgColor: #ce7;
+@backgroundImage: none;
+@mainBgColor: white;
 
-@linkbgColor: #3d3;
-@linkbgHover: #bd5;
+@linkbgColor: gray;
+@linkbgHover: none;
 
-@breadcrumbBgColor: #bd5;
-@bylineBgColor: #bd5;
+@breadcrumbBgColor: white;
+@bylineBgColor: white;
 
-@navbarFont: 'Press Start 2P', cursive;
-@navbarItemBgColor: #bd5;
-@navbarHoverBgColor: #3e4916;
+@navbarFont: none;
+@navbarItemBgColor: white;
+@navbarHoverBgColor: white;
 @maxButtonFontSize: 2em;
 
-@footerGradientFrom: #bd5;
-@footerGradientTo: green;
+@footerGradientFrom: white;
+@footerGradientTo: white;
 
-@flashstripeStart: #ce7;
-@flashstripeStop: #bd5;
+@flashstripeStart: white;
+@flashstripeStop: white;
+
+@fontColor: black;
 
 body {
     .font();
+    color: @fontColor;
     background-image: @backgroundImage;
 }
 
@@ -48,6 +48,7 @@ html {
 
 .typo {
     background-image: url("../img/horisontal-grid-24.png");
+    color: black;
 }
 
 /** --------------------------------------------------------------
@@ -62,11 +63,11 @@ html {
 .byline,
 .breadcrumb-list {
     margin-bottom: @magicNumber;
-    border: 1px solid gray;
+    border: 1px solid black;
     a {
         border: none;
         text-decoration: none;
-        color: #000;
+        color: @fontColor;
         background-color: @linkbgColor;
         border-radius: 40px 10px;
     }
@@ -82,7 +83,7 @@ html {
     a {
         border: none;
         text-decoration: none;
-        color: #000;
+        color: @fontColor;
         background-color: @linkbgColor;
         border-radius: 40px 10px;
     }
@@ -92,8 +93,12 @@ html {
     }
 }
 
+.rm-max .rm-mobile {
+    background-color: @mainBgColor;
+}
+
 .flash-wrap {
-    border: 1px solid gray;
+    border: 1px solid black;
     background: repeating-linear-gradient(
       45deg,
       @flashstripeStart,
@@ -129,11 +134,12 @@ html {
 
 .site-logo-text {
     .column(3);
+    .pull(1);
 }
 
 .navbar2 {
     .column(20);
-    .push(1);
+    margin-left: 0px;
 }
 
 // Size of max navbar button
@@ -151,7 +157,7 @@ html {
 .breadcrumb-list {
     .column(20);
     .push(2);
-    border: 1px solid gray;
+    border: 1px solid black;
     background-color: @breadcrumbBgColor;
 }
 
@@ -168,10 +174,18 @@ html {
     html.vgrid & {
         .showGrid(@gridWidth, @gridImage);
     }
-    /*&.inner-wrap-footer { //"&"-tecken = "parent selector"
+    &.inner-wrap-footer { //"&"-tecken = "parent selector"
         @gridWidth: 100%; //gridet över hela sidan
-        .showGrid(@gridWidth, @gridImage);
-    }*/
+        //.showGrid(@gridWidth, @gridImage);
+    }
+}
+
+.outer-wrap-header {
+    //@gridImage: "../img/grid950x24x30x10-nomargin.png";
+    @gridWidth: 100%;
+    //html.vgrid & {
+    //    .showGrid(@gridWidth, @gridImage);
+    //}
 }
 
 .row {
@@ -203,7 +217,7 @@ html {
     .column(3);
     .push(2);
     background-color: @mainBgColor;
-    border: 1px solid gray;
+    border: 1px solid black;
     text-align: center;
     padding-right: 50px;
 }
@@ -236,7 +250,7 @@ main.has-sidebar-left {
     .push(1);
     //opacity: 0.7;
     background-color: @mainBgColor;
-    border: 1px solid gray;
+    border: 1px solid black;
     padding: 5px;
 }
 /** --------------------------------------------------------------
@@ -258,26 +272,18 @@ main.has-sidebar-left {
 
 .footer-column {
     .column(@columns/3);
-    //background-color: brown;
-    //opacity: 0.5;
-    //color: white;
-    //border-left: 0.1px solid black;
     text-align: center;
 }
 
 .site-footer {
     .column(@columns);
-    //background-color: blue;
-    //opacity: 0.5;
-    //color: white;
     text-align: center;
 }
 
 .byline {
     .column(20);
     .push(2);
-    border: 1px solid #666666;
-    color: black;
+    border: 1px solid black;
     background-color: @bylineBgColor;
 
     img {

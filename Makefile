@@ -31,16 +31,16 @@ HELPTEXT = $(ECHO) "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) |
 
 
 # Add local bin path for test tools
-BIN 		= bin
-VENDORBIN 	= vendor/bin
+BIN			= bin
+VENDORBIN	= vendor/bin
 NPMBIN		= node_modules/.bin
 
 # LESS and CSS
-LESS 		 	= style.less modules.less layout.less #style1.less #style2.less
+LESS			= style.less modules.less layout.less base.less light.less color.less dark.less colorful.less typograpy.less
 LESS_MODULES	= modules/
-LESS_OPTIONS 	= --strict-imports --include-path=$(LESS_MODULES)
+LESS_OPTIONS	= --strict-imports --include-path=$(LESS_MODULES)
 CSSLINT_OPTIONS = --quiet
-FONT_AWESOME 	= modules/font-awesome/fonts/
+FONT_AWESOME	= modules/font-awesome/fonts/
 
 
 
@@ -132,7 +132,7 @@ update:
 # target: npm-install        - Install npm development packages.
 # target: npm-update         - Update npm development packages.
 # target: npm-version        - Display version for each package.
-.PHONY: npm-installl npm-update npm-version
+.PHONY: npm-install npm-update npm-version
 npm-install:
 	@$(call HELPTEXT,$@)
 	npm install
@@ -148,10 +148,10 @@ npm-version:
 
 
 
-# target: upgrade-normalize       - Upgrade LESS module - Normalize.
+# target: upgrade-normalize - Upgrade LESS module - Normalize.
 .PHONY: upgrade-normalize
 upgrade-normalize:
-	$(call HELPTEXT,$@)
+	@$(call HELPTEXT,$@)
 	# Normalizer
 	wget --quiet https://necolas.github.io/normalize.css/latest/normalize.css -O $(LESS_MODULES)/normalize.less
 
